@@ -6,10 +6,17 @@ project(utimer VERSION 1.0)
 set(srcs src/utimer.c src/utimer_impl.c)
 set(include_dirs include)
 
-# 添加库
-add_library(utimer STATIC ${srcs})
+if(ESP_PLATFORM)
+    # 添加esp-idf组件
+    idf_component_register(SRCS ${srcs}
+                            INCLUDE_DIRS ${include_dirs})
+else()
+    # 添加库
+    add_library(utimer STATIC ${srcs})
 
-# 添加头文件路径
-target_include_directories(utimer PUBLIC ${include_dirs})
+    # 添加头文件路径
+    target_include_directories(utimer PUBLIC ${include_dirs})
 
-add_subdirectory(example)
+    # 添加示例
+    add_subdirectory(example)
+endif()
