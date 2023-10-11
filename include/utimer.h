@@ -5,8 +5,8 @@
 #include <stdint.h>
 
 typedef struct {
-    uint64_t s_time;
-    uint64_t e_time;
+    uint64_t s_time; // start time
+    uint64_t e_time; // end time
 } utimer_t;
 
 void utimer_set_timeout(utimer_t *timer, uint64_t timeout_ms);

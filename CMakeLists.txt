@@ -12,6 +12,4 @@ add_library(utimer STATIC ${srcs})
 # 添加头文件路径
 target_include_directories(utimer PUBLIC ${include_dirs})
 
-# 添加可执行文件
-add_executable(test main.c)
-target_link_libraries(test utimer)
+add_subdirectory(example)
